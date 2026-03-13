@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hydrogen — Merge with Confidence</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-orb left"></div>
+  <div class="page-orb right"></div>
+
+  <nav>
+    <div class="nav-logo">
+      <svg viewBox="0 0 26 26" fill="none">
+        <circle cx="13" cy="13" r="12" stroke="#58a6ff" stroke-width="1.4"/>
+        <circle cx="13" cy="13" r="3.5" fill="#58a6ff"/>
+        <line x1="13" y1="1" x2="13" y2="6.5" stroke="#58a6ff" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="13" y1="19.5" x2="13" y2="25" stroke="#58a6ff" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="1" y1="13" x2="6.5" y2="13" stroke="#58a6ff" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="19.5" y1="13" x2="25" y2="13" stroke="#58a6ff" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      hydrogen
+    </div>
+    <div class="nav-links">
+      <a href="#why">Why Hydrogen</a>
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="https://hydrogenpr.dev/demo">View Demo</a>
+      <a href="https://hydrogenpr.dev/" class="btn-nav">Join mailing list →</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="anim1 reveal">
+      <div class="hero-eyebrow">// context-first PR reviews</div>
+      <h1>Merge with<br><em>Confidence.</em></h1>
+      <p class="hero-sub">Context-first PR reviews that make complex changes reviewable. Hydrogen slices your pull request into logical groups — deterministically, every time.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="window.open('https://hydrogenpr.dev/')">Join mailing list →</button>
+        <button class="btn-ghost" onclick="window.open('https://hydrogenpr.dev/demo')">▶ View Demo</button>
+      </div>
+      <p class="hero-note"><span>●</span> Built on rules, not vibes &nbsp;·&nbsp; No hallucinations &nbsp;·&nbsp; Self-hostable</p>
+    </div>
+
+    <div class="anim2 reveal">
+      <div class="pr-mock">
+        <div class="pr-mock-top">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="pr-mock-title">feat: refactor auth system · #142</span>
+            <span class="badge b-open">Open</span>
+          </div>
+          <span style="font-size:12px;color:var(--muted);font-family:var(--font-mono)">47 files · 5 slices</span>
+        </div>
+
+        <div class="slice-row"><div class="slice-left"><div class="sdot sdot-red"></div>Database</div><div style="display:flex;align-items:center;gap:8px;"><span class="badge b-high">HIGH</span><span class="scount">3 files</span></div></div>
+        <div class="slice-row" style="background:rgba(88,166,255,.04)"><div class="slice-left"><div class="sdot sdot-red"></div>Auth</div><div style="display:flex;align-items:center;gap:8px;"><span class="badge b-high">HIGH</span><span class="scount">8 files</span></div></div>
+        <div class="slice-row"><div class="slice-left"><div class="sdot sdot-yellow"></div>Backend</div><div style="display:flex;align-items:center;gap:8px;"><span class="badge b-med">MED</span><span class="scount">14 files</span></div></div>
+        <div class="slice-row"><div class="slice-left"><div class="sdot sdot-yellow"></div>Frontend</div><div style="display:flex;align-items:center;gap:8px;"><span class="badge b-med">MED</span><span class="scount">16 files</span></div></div>
+        <div class="slice-row"><div class="slice-left"><div class="sdot sdot-green"></div>Tests</div><div style="display:flex;align-items:center;gap:8px;"><span class="badge b-low">LOW</span><span class="scount">6 files</span></div></div>
+
+        <div class="diff-bar"><span class="fname">migrations/20240301_add_sessions.sql</span><span style="display:flex;gap:6px;"><span style="color:var(--green)">+5</span><span style="color:var(--red)">−1</span></span></div>
+        <table class="diff-table">
+          <tr class="da"><td class="dn">1</td><td class="dg">+</td><td class="dc"><span class="kw">CREATE TABLE</span> <span class="ty">user_sessions</span> (</td></tr>
+          <tr class="da"><td class="dn">2</td><td class="dg">+</td><td class="dc">  <span class="fn">id</span>         <span class="ty">UUID</span> <span class="kw">PRIMARY KEY DEFAULT</span> <span class="fn">gen_random_uuid</span>(),</td></tr>
+          <tr class="da"><td class="dn">3</td><td class="dg">+</td><td class="dc">  <span class="fn">user_id</span>    <span class="ty">INTEGER</span> <span class="kw">REFERENCES</span> <span class="fn">users</span>(id),</td></tr>
+          <tr class="da"><td class="dn">4</td><td class="dg">+</td><td class="dc">  <span class="fn">expires_at</span> <span class="ty">TIMESTAMPTZ</span> <span class="kw">NOT NULL</span></td></tr>
+          <tr class="da"><td class="dn">5</td><td class="dg">+</td><td class="dc">);</td></tr>
+          <tr class="dr"><td class="dn">6</td><td class="dg">−</td><td class="dc"><span class="kw">ALTER TABLE</span> <span class="fn">users</span> <span class="kw">ADD COLUMN</span> <span class="fn">session_token</span> <span class="ty">TEXT</span>;</td></tr>
+        </table>
+
+        <div class="pr-mock-footer">
+          <button class="xbtn xbtn-approve">✓ Approve</button>
+          <button class="xbtn xbtn-comment">Comment</button>
+          <button class="xbtn xbtn-req">✗ Request Changes</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="glow">
+
+  <div class="wrap reveal" style="padding-top:52px;padding-bottom:52px;">
+    <div class="stats-row">
+      <div class="sbox"><div class="snum"><b>5</b></div><div class="slabel">logical slices per PR</div></div>
+      <div class="sbox"><div class="snum"><b>0</b></div><div class="slabel">hallucinations — rules only</div></div>
+      <div class="sbox"><div class="snum"><b>∞</b></div><div class="slabel">consistent, stable slices</div></div>
+      <div class="sbox"><div class="snum"><b>1</b>-click</div><div class="slabel">GitHub App install</div></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <section id="why" class="wrap reveal">
+    <div class="eyebrow">// why hydrogen</div>
+    <h2 class="section-h">Built on rules, not vibes.</h2>
+    <p class="section-p">AI reviewers hallucinate, miss context, and give you false confidence. Hydrogen uses deterministic rules to slice your PR — the same way, every time.</p>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="wicon wi-green">🚫</div>
+        <h3>No hallucinations</h3>
+        <p>Every slice is computed from file patterns and dependency rules. No surprises, no invented context — just exact, reproducible groupings.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="wicon wi-blue">🔍</div>
+        <h3>Auditable decisions</h3>
+        <p>You can see exactly why a change landed in a slice. Rules, not a black box. Every grouping is fully explainable to your team.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="wicon wi-purple">🔄</div>
+        <h3>Stable across refreshes</h3>
+        <p>The same PR produces the same slices. Always. Your review context doesn't vanish between sessions or between reviewers.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="wrap reveal" style="padding-top:72px;">
+    <div class="eyebrow">// the problem</div>
+    <h2 class="section-h">Reviewing PRs is broken.</h2>
+    <p class="section-p">Agent-generated and complex pull requests are overwhelming traditional review workflows.</p>
+    <div class="problems-grid">
+      <div class="prob-card reveal">
+        <div class="picon">🌊</div>
+        <h3>Lost in the noise</h3>
+        <p>PRs with 50+ files make it impossible to see what actually matters. Critical changes get buried in formatting updates and config tweaks.</p>
+      </div>
+      <div class="prob-card reveal">
+        <div class="picon">🧩</div>
+        <h3>No context</h3>
+        <p>Reviewing commit-by-commit doesn't show how changes relate. You're forced to piece together the story yourself across dozens of files.</p>
+      </div>
+      <div class="prob-card reveal">
+        <div class="picon">⏳</div>
+        <h3>Wasted time</h3>
+        <p>Hours spent context-switching between unrelated changes. You review the same file multiple times without realising it.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="glow">
+
+  <section id="how" class="wrap reveal">
+    <div class="hiw">
+      <div>
+        <div class="eyebrow">// how it works</div>
+        <h2 class="section-h">Three steps to better PR reviews.</h2>
+        <p class="section-p" style="margin-bottom:36px;">Hydrogen plugs into your existing GitHub workflow. No new branching rules, no merge automation.</p>
+        <div class="steps">
+          <div class="step reveal">
+            <div class="step-num">1</div>
+            <div><h3>Install GitHub App</h3><p>Connect Hydrogen to your repositories in seconds. We automatically sync all open pull requests and keep them up to date.</p></div>
+          </div>
+          <div class="step reveal">
+            <div class="step-num" style="background:var(--accent4);">2</div>
+            <div><h3>PRs are sliced</h3><p>Related changes are automatically grouped into logical slices. Migrations, auth changes, backend, frontend — each gets its own context.</p></div>
+          </div>
+          <div class="step reveal">
+            <div class="step-num" style="background:var(--accent2);">3</div>
+            <div><h3>Review by context</h3><p>Focus on one slice at a time. Each slice is risk-scored so you know where to spend attention first. Approve slices independently while others keep working.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slice-panel reveal">
+        <div class="slice-panel-hdr">feat: refactor auth system · #142 · 5 slices</div>
+        <div class="progress-bar">
+          <span>Slice progress</span>
+          <div class="pbar-track"><div class="pbar-fill" style="width:40%"></div></div>
+          <span style="color:var(--green);font-weight:700;">2 of 5 approved</span>
+        </div>
+        <div class="slice-row"><div class="slice-left"><div class="sdot sdot-green"></div>Database</div><div style="display:flex;gap:8px;align-items:center;"><span class="badge b-high">HIGH</span><span style="font-size:11px;color:var(--green);">✓ Approved</span></div></div>
+        <div class="slice-row"><div class="slice-left"><div class="sdot sdot-green"></div>Auth</div><div style="display:flex;gap:8px;align-items:center;"><span class="badge b-high">HIGH</span><span style="font-size:11px;color:var(--green);">✓ Approved</span></div></div>
+        <div class="slice-row" style="background:rgba(88,166,255,.05);border-left:2px solid var(--accent);"><div class="slice-left"><div class="sdot sdot-yellow"></div>Backend</div><div style="display:flex;gap:8px;align-items:center;"><span class="badge b-med">MED</span><span style="font-size:11px;color:var(--accent);">Reviewing…</span></div></div>
+        <div class="slice-row"><div class="slice-left"><div class="sdot sdot-yellow"></div>Frontend</div><div style="display:flex;gap:8px;align-items:center;"><span class="badge b-med">MED</span><span class="scount">16 files</span></div></div>
+        <div class="slice-row"><div class="slice-left"><div class="sdot sdot-green"></div>Tests</div><div style="display:flex;gap:8px;align-items:center;"><span class="badge b-low">LOW</span><span class="scount">6 files</span></div></div>
+        <div style="padding:10px 16px;background:var(--surface2);border-top:1px solid var(--border2);font-size:12px;color:var(--muted);">💡 Approve slices independently — PR stays open until all are done.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="features" class="wrap reveal">
+    <div class="eyebrow">// built for modern development</div>
+    <h2 class="section-h">Hydrogen adapts to your workflow.</h2>
+    <p class="section-p">Not the other way around.</p>
+    <div class="feat-grid">
+      <div class="feat-card reveal"><div class="ficon">🔪</div><div><h3>Smart Slicing</h3><p>Changes are automatically grouped by file type, patterns, and dependencies. Deterministic and stable — no magic, just well-defined rules your team can inspect and extend.</p></div></div>
+      <div class="feat-card reveal"><div class="ficon">🎯</div><div><h3>Risk Scoring</h3><p>Each slice gets a risk level — HIGH for migrations and auth changes, LOW for docs and tests. Focus your attention exactly where it matters most, every review.</p></div></div>
+      <div class="feat-card reveal"><div class="ficon">🐙</div><div><h3>GitHub Native</h3><p>Works with your existing GitHub workflow. No new branching rules, no merge automation, no blocking checks. Install the app and you're done.</p></div></div>
+      <div class="feat-card reveal"><div class="ficon">🏠</div><div><h3>Self-Hostable</h3><p>Run Hydrogen on your own infrastructure from day one. Docker Compose setup, full control over your data, no vendor lock-in. Your code never leaves your environment.</p></div></div>
+      <div class="feat-card reveal"><div class="ficon">✅</div><div><h3>Approve by Slice</h3><p>Mark individual slices as reviewed. Migrations can be approved by the DBA while the frontend waits on the designer. No need to wait for 100% before shipping.</p></div></div>
+      <div class="feat-card reveal"><div class="ficon">📊</div><div><h3>Clear Progress at a Glance</h3><p>See exactly which slices are done and what still needs eyes. No ambiguity about review state, even across large teams working asynchronously.</p></div></div>
+    </div>
+  </section>
+
+  <hr class="glow">
+
+  <div class="cta-section reveal">
+    <div class="eyebrow" style="display:inline-block;margin-bottom:14px;">// join the waitlist</div>
+    <h2>Ready to merge with confidence?</h2>
+    <p>Be the first to know when Hydrogen launches. No credit card required. Works with any public or private GitHub repo.</p>
+    <div class="cta-actions">
+      <button class="btn-primary" onclick="window.open('https://hydrogenpr.dev/')">Join mailing list →</button>
+      <button class="btn-ghost" onclick="window.open('https://hydrogenpr.dev/demo')">▶ View Demo</button>
+    </div>
+  </div>
+
+  <footer class="reveal">
+    <div class="game-band-header">
+      <div class="game-band-title">
+        <span style="font-size:22px;">⚗️</span>
+        <h3>Element Drop</h3>
+        <span class="badge b-open" style="font-size:11px;">a little game for Hyd fans</span>
+      </div>
+      <span style="font-size:12px;color:var(--dim);font-family:var(--font-mono);">High score: <span id="hiScoreDisplay" style="color:var(--accent);">0</span></span>
+    </div>
+
+    <p class="game-band-sub">// drop elements · identical elements merge into the next atom · reach Na &amp; beyond</p>
+
+    <div class="game-full">
+      <div class="game-canvas-block reveal">
+        <div style="position:relative;">
+          <canvas id="gameCanvas" width="920" height="560"></canvas>
+          <div class="game-over-overlay" id="gameOverlay">
+            <h2>💥 Game Over</h2>
+            <p id="finalScore">Score: 0</p>
+            <button class="btn-primary" onclick="restartGame()" style="margin-top:8px;">Play again →</button>
+          </div>
+        </div>
+        <div class="game-ui-bar">
+          <span class="game-score">Score: <span id="scoreDisplay">0</span></span>
+          <div class="game-next-box">
+            <span>Next →</span>
+            <canvas id="gameNextCanvas" width="34" height="34" style="border-radius:50%;"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-rules reveal">
+      <div class="game-side">
+        <div class="game-info-card reveal">
+          <h4>Elements</h4>
+          <div class="elem-legend" id="elemLegend"></div>
+        </div>
+      </div>
+
+      <div class="game-info-card howto reveal">
+        <h4>How to play</h4>
+        <p>Move your mouse (or tap) to aim. <strong style="color:var(--text)">Click or tap</strong> to drop an element.</p>
+        <p>When two <strong style="color:var(--accent)">identical elements</strong> collide, they fuse into the next heavier atom — just like Hydrogen fuses PR changes into clarity.</p>
+        <p>Don't let elements pile above the <span style="color:var(--red)">red danger line</span>. Reach Na!</p>
+      </div>
+
+      <div class="game-info-card reveal">
+        <h4>Merge chain</h4>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:4px;" id="mergeChain"></div>
+      </div>
+    </div>
+
+    <div class="footer-strip">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom:8px;font-size:14px;">
+          <svg style="width:18px;height:18px;" viewBox="0 0 26 26" fill="none">
+            <circle cx="13" cy="13" r="12" stroke="#58a6ff" stroke-width="1.4"/>
+            <circle cx="13" cy="13" r="3.5" fill="#58a6ff"/>
+            <line x1="13" y1="1" x2="13" y2="6.5" stroke="#58a6ff" stroke-width="1.4" stroke-linecap="round"/>
+            <line x1="13" y1="19.5" x2="13" y2="25" stroke="#58a6ff" stroke-width="1.4" stroke-linecap="round"/>
+            <line x1="1" y1="13" x2="6.5" y2="13" stroke="#58a6ff" stroke-width="1.4" stroke-linecap="round"/>
+            <line x1="19.5" y1="13" x2="25" y2="13" stroke="#58a6ff" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          hydrogen
+        </div>
+        <p>Merge with Confidence. Context-first PR reviews that make complex changes reviewable.</p>
+      </div>
+
+      <div class="footer-links">
+        <div class="fl-group">
+          <h4>Product</h4>
+          <a href="https://hydrogenpr.dev/demo">Demo</a>
+          <a href="https://hydrogenpr.dev/">Waitlist</a>
+          <a href="#">Changelog</a>
+        </div>
+        <div class="fl-group">
+          <h4>Resources</h4>
+          <a href="#">Docs</a>
+          <a href="#">Self-hosting</a>
+          <a href="#">GitHub App</a>
+        </div>
+        <div class="fl-group">
+          <h4>Company</h4>
+          <a href="#">About</a>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Hydrogen. Built for engineers who care about quality.</span>
+      <span style="font-family:var(--font-mono);font-size:10px;"><a href="https://hydrogenpr.dev/">hydrogenpr.dev</a></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
